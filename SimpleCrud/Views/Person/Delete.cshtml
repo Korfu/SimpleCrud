@@ -1,0 +1,9 @@
+﻿@model long
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("id", Model);
+
+    <text>Czy na pewno chcesz usunąć użytkownika o ID:@Model?</text>
+    <input type="submit" value="Tak" class="btn btn-primary" />
+}

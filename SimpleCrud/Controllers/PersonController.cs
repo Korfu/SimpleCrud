@@ -1,4 +1,5 @@
 ﻿using SimpleCrud.Entities;
+using SimpleCrud.Models;
 using SimpleCrud.Repositories;
 using System.Web.Mvc;
 
@@ -22,26 +23,49 @@ namespace SimpleCrud.Controllers
 
         public ActionResult Edit(long id)
         {
-            return View();
+            var model = _personRepository.GetUser(id);
+            return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Edit(EditUserModel model)
+        {
+            _personRepository.Update(model);
+            return RedirectToAction("index");
+        }
+
+        [HttpGet]
         public ActionResult Add()
         {
-            if (ModelState.IsValid)
-            {
-                var user = new User();
-                _personRepository.Add(user);
-                return View("Add");
-            } else
-            {
-                return View("index");
-            }
+            var model = new UserAddModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Add(UserAddModel model)
+        {
+            _personRepository.Add(model);
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(long id)
         {
             var person = _personRepository.GetUser(id);
             return View(person);
+        }
+
+        public ActionResult Delete(long id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(long id, object dummy)
+        {
+            _personRepository.Delete(id);
+
+            return RedirectToAction("Index");
         }
     }
 }

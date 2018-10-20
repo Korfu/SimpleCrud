@@ -1,14 +1,16 @@
 ﻿using SimpleCrud.Entities;
+using SimpleCrud.Models;
 using System.Collections.Generic;
 
 namespace SimpleCrud.Repositories
 {
     public interface IPersonRepository
     {
-        IList<User> GetAllUsers();
-        User GetUser(long id);
+        IList<UserModel> GetAllUsers();
+        EditUserModel GetUser(long id);
 
-        void Add(User user);
-        void Update(User user);
+        void Add(UserAddModel userModel);
+        void Update(EditUserModel userModel);
+        void Delete(long id);
     }
 }

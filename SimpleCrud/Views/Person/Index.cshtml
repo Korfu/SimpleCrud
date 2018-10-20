@@ -1,5 +1,6 @@
 ﻿@using SimpleCrud.Entities
-@model IList<User>
+@using SimpleCrud.Models
+@model IList<UserModel>
 
 <table class="table table-hover">
     <thead>
@@ -10,14 +11,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var user in Model)
+        @foreach (var user in Model)
         {
         <tr>
-            <td>@user.FirstName @user.LastName</td>
-            <td>@(DateTime.Now.Year - user.DateOfBirth.Year)</td>
-            <td>@(user.IsActive ? "Tak" : "Nie")</td>
-            <td><div class="btn">@Html.ActionLink("Details", "Details", "Person", new { id = user.Id }, new { @class = "btn btn-primary" })</div></td>
-
+            <td><a href="@Url.Action("Edit", new { user.Id })">@user.FullName</a></td>
+            <td>@user.Age</td>
+            <td>@user.IsActiveAsString</td>
         </tr>
         }
     </tbody>
