@@ -1,0 +1,24 @@
+﻿@using SimpleCrud.Entities
+@model IList<User>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Imię i Nazwisko</th>
+            <th>Wiek</th>
+            <th>Czy aktywny</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in Model)
+        {
+        <tr>
+            <td>@user.FirstName @user.LastName</td>
+            <td>@(DateTime.Now.Year - user.DateOfBirth.Year)</td>
+            <td>@(user.IsActive ? "Tak" : "Nie")</td>
+            <td><div class="btn">@Html.ActionLink("Details", "Details", "Person", new { id = user.Id }, new { @class = "btn btn-primary" })</div></td>
+
+        </tr>
+        }
+    </tbody>
+</table>

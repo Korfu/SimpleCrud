@@ -1,0 +1,19 @@
+﻿@using SimpleCrud.Entities
+@model User
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Imię i Nazwisko</th>
+            <th>Wiek</th>
+            <th>Czy aktywny</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.FirstName @Model.LastName</td>
+                <td>@(DateTime.Now.Year - Model.DateOfBirth.Year)</td>
+                <td>@(Model.IsActive ? "Tak" : "Nie")</td>
+            </tr>
+    </tbody>
+</table>
