@@ -33,9 +33,11 @@ namespace SimpleCrud
         {
 
             // jak napotka to co po lewej, to wstrzyknie to co po prawej, prawa strona implementuje interfejs z lewej strony
+
             kernel.Bind<IPersonRepository>().To<PersonRepository>();
             kernel.Bind<PersonController>().To<PersonController>();
             kernel.Bind<IValidator<AddUserModel>>().To<AddUSerModelValidator>();
+            kernel.Bind<IValidator<EditUserModel>>().To<EditUserModelValidator>();
         }
     }
 }

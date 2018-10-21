@@ -1,8 +1,5 @@
-﻿using SimpleCrud.Entities;
-using SimpleCrud.Models;
+﻿using SimpleCrud.Models;
 using SimpleCrud.Repositories;
-using SimpleCrud.Validators;
-using System;
 using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
@@ -15,7 +12,6 @@ namespace SimpleCrud.Controllers
         {
             _personRepository = personRepository;
         }
-
 
         public ActionResult Index()
         {
@@ -32,8 +28,15 @@ namespace SimpleCrud.Controllers
         [HttpPost]
         public ActionResult Edit(EditUserModel model)
         {
-            _personRepository.Update(model);
-            return RedirectToAction("index");
+            Validate(model);
+
+
+            if (ModelState.IsValid)
+            {
+                _personRepository.Update(model);
+                return RedirectToAction("index");
+            }
+            return View(model);
         }
 
         [HttpGet]
