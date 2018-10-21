@@ -9,8 +9,10 @@ namespace SimpleCrud.Models
         {
             DateOfBirth = DateTime.Now;
         }
-
+        
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
 
         [DataType(DataType.Date)]

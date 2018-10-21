@@ -44,9 +44,12 @@ namespace SimpleCrud.Controllers
         [HttpPost]
         public ActionResult Add(UserAddModel model)
         {
-            _personRepository.Add(model);
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _personRepository.Add(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         public ActionResult Details(long id)
