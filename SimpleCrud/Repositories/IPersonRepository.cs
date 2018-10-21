@@ -9,7 +9,7 @@ namespace SimpleCrud.Repositories
         IList<UserModel> GetAllUsers();
         EditUserModel GetUser(long id);
 
-        void Add(UserAddModel userModel);
+        void Add(AddUserModel userModel);
         void Update(EditUserModel userModel);
         void Delete(long id);
     }

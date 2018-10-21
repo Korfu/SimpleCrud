@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SimpleCrud.Validators
 {
-    public interface IValidator
+    public interface IValidator<TModel>
     {
-        ValidateResult Validate<T>(string key,T param);
+        IEnumerable<ValidateResult> Validate(TModel model);
     }
 
     public class ValidateResult

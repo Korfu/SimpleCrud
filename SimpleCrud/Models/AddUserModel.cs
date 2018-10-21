@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SimpleCrud.Models
 {
-    public class UserAddModel
+    public class AddUserModel
     {
-        public UserAddModel()
+        public AddUserModel()
         {
             DateOfBirth = DateTime.Now;
         }

@@ -1,6 +1,7 @@
 ﻿using SimpleCrud.Entities;
 using SimpleCrud.Models;
 using SimpleCrud.Repositories;
+using SimpleCrud.Validators;
 using System;
 using System.Web.Mvc;
 
@@ -9,6 +10,12 @@ namespace SimpleCrud.Controllers
     public class PersonController : Controller
     {
         private readonly IPersonRepository _personRepository = new PersonRepository();
+        private readonly IValidator<AddUserModel> _addUserModelValidator = new AddUSerModelValidator();
+
+        //public PersonController(IValidator<DateTime> dateOfBirthValidator)
+        //{
+        //    _dateOfBirthValidator = dateOfBirthValidator;
+        //}
 
         //public PersonController(IPersonRepository personRepository)
         //{
@@ -38,24 +45,25 @@ namespace SimpleCrud.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            var model = new UserAddModel();
+            var model = new AddUserModel();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Add(UserAddModel model)
+        public ActionResult Add(AddUserModel model)
         {
-            var dateOfBirth = model.DateOfBirth;
-            var now = DateTime.UtcNow;
+            var validationResult = _addUserModelValidator.Validate(model);
 
-            var yearsDifference = now.Year - dateOfBirth.Year;
-
-            if(yearsDifference <= 10)
+            foreach (var result in validationResult)
             {
-                ModelState.AddModelError(nameof(model.DateOfBirth), //"DateOFBirth"
-                                         "Użytkownik musi być starszy niż 10 lat");
+                if (validationResult != null)
+                {
+                    ModelState.AddModelError(
+                        result.Key,
+                        result.Message);
+                }
             }
-
+         
             if (ModelState.IsValid)
             {
                 _personRepository.Add(model);

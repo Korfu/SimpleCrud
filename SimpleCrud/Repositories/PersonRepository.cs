@@ -20,7 +20,7 @@ namespace SimpleCrud.Repositories
             return _users.Max(u => u.Id) + 1;
         }
 
-        public void Add(UserAddModel userModel)
+        public void Add(AddUserModel userModel)
         {
             var user = new User
             {
