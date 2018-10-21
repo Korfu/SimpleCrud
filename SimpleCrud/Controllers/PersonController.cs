@@ -1,6 +1,7 @@
 ﻿using SimpleCrud.Entities;
 using SimpleCrud.Models;
 using SimpleCrud.Repositories;
+using System;
 using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
@@ -44,6 +45,17 @@ namespace SimpleCrud.Controllers
         [HttpPost]
         public ActionResult Add(UserAddModel model)
         {
+            var dateOfBirth = model.DateOfBirth;
+            var now = DateTime.UtcNow;
+
+            var yearsDifference = now.Year - dateOfBirth.Year;
+
+            if(yearsDifference <= 10)
+            {
+                ModelState.AddModelError(nameof(model.DateOfBirth), //"DateOFBirth"
+                                         "Użytkownik musi być starszy niż 10 lat");
+            }
+
             if (ModelState.IsValid)
             {
                 _personRepository.Add(model);
