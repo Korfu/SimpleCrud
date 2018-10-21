@@ -168,11 +168,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Role\AddRoleModel.cs" />
-    <Compile Include="Models\Role\RoleModel.cs" />
-    <Compile Include="Models\User\EditUserModel.cs" />
-    <Compile Include="Models\User\AddUserModel.cs" />
-    <Compile Include="Models\User\UserModel.cs" />
+    <Compile Include="Models\Roles\AddRoleModel.cs" />
+    <Compile Include="Models\Roles\RoleModel.cs" />
+    <Compile Include="Models\Users\EditUserModel.cs" />
+    <Compile Include="Models\Users\AddUserModel.cs" />
+    <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IPersonRepository.cs" />

@@ -6,10 +6,13 @@ namespace SimpleCrud.Controllers
 {
     public class PersonController : BaseController
     {
+        private readonly IRolesRepository _rolesRepository;
         private readonly IPersonRepository _personRepository;
 
-        public PersonController(IPersonRepository personRepository)
+        public PersonController(IPersonRepository personRepository,
+                                IRolesRepository rolesRepository)
         {
+            _rolesRepository = rolesRepository;
             _personRepository = personRepository;
         }
 
@@ -43,6 +46,7 @@ namespace SimpleCrud.Controllers
         public ActionResult Add()
         {
             var model = new AddUserModel();
+            ViewBag.Roles = _rolesRepository.GetAll();
             return View(model);
         }
 
