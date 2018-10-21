@@ -17,6 +17,7 @@
             <td><a href="@Url.Action("Edit", new { user.Id })">@user.FullName</a></td>
             <td>@user.Age</td>
             <td>@user.IsActiveAsString</td>
+            <td>@Html.ActionLink("Delete", "Delete", "Person", new { id = user.Id }, new { @class = "btn btn-danger" })</td>
         </tr>
         }
     </tbody>
