@@ -162,17 +162,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\EditUserModel.cs" />
-    <Compile Include="Models\AddUserModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\Role\AddRoleModel.cs" />
+    <Compile Include="Models\Role\RoleModel.cs" />
+    <Compile Include="Models\User\EditUserModel.cs" />
+    <Compile Include="Models\User\AddUserModel.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
     <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IPersonRepository.cs" />
+    <Compile Include="Repositories\IRolesRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
+    <Compile Include="Repositories\RolesRepository.cs" />
     <Compile Include="Validators\AddUSerModelValidator.cs" />
     <Compile Include="Validators\EditUserModelValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
@@ -221,6 +227,9 @@
     <Content Include="Views\Person\Details.cshtml" />
     <Content Include="Views\Person\Edit.cshtml" />
     <Content Include="Views\Person\Delete.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Add.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

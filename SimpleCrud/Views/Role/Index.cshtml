@@ -1,0 +1,22 @@
+﻿@using SimpleCrud.Models.Role
+@model IList<RoleModel>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+        <tr>
+            <td>@role.Id</td>
+            <td>@role.Name</td>
+            <td>@Html.ActionLink("Delete","Delete","Role",new { id = role.Id }, new { @class = "btn btn-danger" }) </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
