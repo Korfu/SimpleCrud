@@ -1,4 +1,5 @@
-﻿using SimpleCrud.Validators;
+﻿using Ninject;
+using SimpleCrud.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,13 @@ namespace SimpleCrud.Controllers
 {
     public abstract class BaseController : Controller
     {
-        public void Validate<Tmodel>(IValidator<Tmodel> validator, Tmodel model)
+        [Inject]
+        public IKernel Kernel { get; set; }
+
+        public void Validate<Tmodel>(Tmodel model)
         {
+            var validator = Kernel.Get<IValidator<Tmodel>>();
+
             var result = validator.Validate(model);
 
             foreach (var item in result)

@@ -10,12 +10,9 @@ namespace SimpleCrud.Controllers
     public class PersonController : BaseController
     {
         private readonly IPersonRepository _personRepository;
-        private readonly IValidator<AddUserModel> _addUserModelValidator;
 
-        public PersonController(IPersonRepository personRepository, 
-                                IValidator<AddUserModel> addUserModelValidator)
+        public PersonController(IPersonRepository personRepository)
         {
-            _addUserModelValidator = addUserModelValidator;
             _personRepository = personRepository;
         }
 
@@ -49,7 +46,7 @@ namespace SimpleCrud.Controllers
         [HttpPost]
         public ActionResult Add(AddUserModel model)
         {
-            Validate(_addUserModelValidator, model);
+            Validate(model);
          
             if (ModelState.IsValid)
             {
