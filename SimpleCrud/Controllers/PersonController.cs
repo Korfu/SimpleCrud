@@ -7,21 +7,19 @@ using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
 {
-    public class PersonController : Controller
+    public class PersonController : BaseController
     {
-        private readonly IPersonRepository _personRepository = new PersonRepository();
+        private readonly IPersonRepository _personRepository;
         private readonly IValidator<AddUserModel> _addUserModelValidator = new AddUSerModelValidator();
 
-        //public PersonController(IValidator<DateTime> dateOfBirthValidator)
-        //{
-        //    _dateOfBirthValidator = dateOfBirthValidator;
-        //}
+        public PersonController(IPersonRepository personRepository)
+        {
+ 
+            _personRepository = personRepository;
+        }
 
-        //public PersonController(IPersonRepository personRepository)
-        //{
-        //    _personRepository = personRepository;
-        //}
-
+        //IValidator<AddUserModel> addUserModelValidator
+        //   _addUserModelValidator = addUserModelValidator;
 
         public ActionResult Index()
         {
@@ -52,17 +50,7 @@ namespace SimpleCrud.Controllers
         [HttpPost]
         public ActionResult Add(AddUserModel model)
         {
-            var validationResult = _addUserModelValidator.Validate(model);
-
-            foreach (var result in validationResult)
-            {
-                if (validationResult != null)
-                {
-                    ModelState.AddModelError(
-                        result.Key,
-                        result.Message);
-                }
-            }
+            Validate(_addUserModelValidator, model);
          
             if (ModelState.IsValid)
             {

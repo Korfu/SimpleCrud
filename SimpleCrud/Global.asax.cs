@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Ninject;
+using SimpleCrud.Controllers;
+using SimpleCrud.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +15,14 @@ namespace SimpleCrud
     {
         protected void Application_Start()
         {
+            var kernel = new StandardKernel(); //tworzenie instancji kontenera
+            kernel.Bind<IPersonRepository>().To<PersonRepository>();
+            kernel.Bind<PersonController>().To<PersonController>();
+
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(kernel));
+            //tworzymy nową fabrykę dla kontrolerów, aby mogły otrzymywać parametry w konstrukotrze
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
