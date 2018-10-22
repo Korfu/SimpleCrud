@@ -28,7 +28,7 @@ namespace SimpleCrud.Repositories
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName,
                 DateOfBirth = userModel.DateOfBirth,
-                IsActive = true
+                IsActive = true,
             };
             _users.Add(user);
         }

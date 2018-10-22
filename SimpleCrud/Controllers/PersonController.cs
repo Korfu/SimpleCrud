@@ -1,5 +1,6 @@
 ﻿using SimpleCrud.Models;
 using SimpleCrud.Repositories;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
@@ -46,7 +47,8 @@ namespace SimpleCrud.Controllers
         public ActionResult Add()
         {
             var model = new AddUserModel();
-            ViewBag.Roles = _rolesRepository.GetAll();
+            var rolesList = _rolesRepository.GetAll();
+            model.RoleModelList = new SelectList(rolesList,"Id","Name");
             return View(model);
         }
 
@@ -60,6 +62,8 @@ namespace SimpleCrud.Controllers
                 _personRepository.Add(model);
                 return RedirectToAction("Index");
             }
+            var rolesList = _rolesRepository.GetAll();
+            model.RoleModelList = new SelectList(rolesList, "Id", "Name");
             return View(model);
         }
 

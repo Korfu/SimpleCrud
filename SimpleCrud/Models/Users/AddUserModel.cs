@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SimpleCrud.Models.Role;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SimpleCrud.Models
 {
@@ -7,7 +10,7 @@ namespace SimpleCrud.Models
     {
         public AddUserModel()
         {
-            DateOfBirth = DateTime.Now;
+            DateOfBirth = DateTime.Now;            
         }
         [Required]
         [MinLength(3, ErrorMessage = "za krótkie Imię!")]
@@ -17,7 +20,8 @@ namespace SimpleCrud.Models
         public string LastName { get; set; }
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        public Entities.Role Role { get; set; }
-
+        public RoleModel Role { get; set; }
+        public IEnumerable<SelectListItem> RoleModelList { get; set; }
+        public long RoleId { get; set; }
     }
 }
