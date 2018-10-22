@@ -1,4 +1,5 @@
 ﻿using SimpleCrud.Models;
+using SimpleCrud.Models.Role;
 using SimpleCrud.Repositories;
 using System.Linq;
 using System.Web.Mvc;
@@ -20,12 +21,18 @@ namespace SimpleCrud.Controllers
         public ActionResult Index()
         {
             var userList = _personRepository.GetAllUsers();
+            foreach (var user in userList)
+            {
+                user.Role = _rolesRepository.GetAll().Single(x => x.Id == user.RoleId);
+            }
+
             return View(userList);
         }
 
         public ActionResult Edit(long id)
         {
             var model = _personRepository.GetUser(id);
+            var rolesList = GetRoles();
             return View(model);
         }
 
@@ -34,13 +41,17 @@ namespace SimpleCrud.Controllers
         {
             Validate(model);
 
-
             if (ModelState.IsValid)
             {
                 _personRepository.Update(model);
                 return RedirectToAction("index");
             }
-            return View(model);
+            else
+            {
+                var rolesList = GetRoles();
+                return View(model);
+            }
+            
         }
 
         [HttpGet]
@@ -59,6 +70,7 @@ namespace SimpleCrud.Controllers
          
             if (ModelState.IsValid)
             {
+
                 _personRepository.Add(model);
                 return RedirectToAction("Index");
             }
@@ -84,6 +96,15 @@ namespace SimpleCrud.Controllers
             _personRepository.Delete(id);
 
             return RedirectToAction("Index");
+        }
+
+        private dynamic GetRoles()
+        {
+            return _rolesRepository.GetAll().Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            });
         }
     }
 }

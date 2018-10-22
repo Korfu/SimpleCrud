@@ -20,7 +20,6 @@ namespace SimpleCrud.Models
         public string LastName { get; set; }
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        public RoleModel Role { get; set; }
         public IEnumerable<SelectListItem> RoleModelList { get; set; }
         public long RoleId { get; set; }
     }

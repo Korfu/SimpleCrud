@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SimpleCrud.Models
 {
@@ -12,7 +13,7 @@ namespace SimpleCrud.Models
         public string FullName { get; set; }
         public int Age { get; set; }
         public string IsActiveAsString { get; set; }
+        public long RoleId { get; set; }
         public RoleModel Role { get; set; }
-
     }
 }

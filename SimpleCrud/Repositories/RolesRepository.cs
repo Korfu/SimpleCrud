@@ -12,9 +12,9 @@ namespace SimpleCrud.Repositories
     {
         private static readonly IList<Role> _roles = new List<Role>()
         {
-            new Role {Id =1, Name="Admin" },
-            new Role {Id = 2, Name="User"},
-            new Role {Id = 3, Name="Guest"}
+            new Role {Id =0, Name="Admin" },
+            new Role {Id = 1, Name="User"},
+            new Role {Id = 2, Name="Guest"}
         };
 
         private long GenerateKey()
