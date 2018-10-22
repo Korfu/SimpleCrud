@@ -32,7 +32,8 @@ namespace SimpleCrud.Controllers
         public ActionResult Edit(long id)
         {
             var model = _personRepository.GetUser(id);
-            var rolesList = GetRoles();
+            var rolesList = _rolesRepository.GetAll();
+            model.RoleModelList = new SelectList(rolesList, "Id", "Name");
             return View(model);
         }
 
@@ -46,12 +47,9 @@ namespace SimpleCrud.Controllers
                 _personRepository.Update(model);
                 return RedirectToAction("index");
             }
-            else
-            {
-                var rolesList = GetRoles();
-                return View(model);
-            }
-            
+            var rolesList = _rolesRepository.GetAll();
+            model.RoleModelList = new SelectList(rolesList, "Id", "Name");
+            return View(model);
         }
 
         [HttpGet]
@@ -70,7 +68,6 @@ namespace SimpleCrud.Controllers
          
             if (ModelState.IsValid)
             {
-
                 _personRepository.Add(model);
                 return RedirectToAction("Index");
             }
@@ -96,15 +93,6 @@ namespace SimpleCrud.Controllers
             _personRepository.Delete(id);
 
             return RedirectToAction("Index");
-        }
-
-        private dynamic GetRoles()
-        {
-            return _rolesRepository.GetAll().Select(x => new SelectListItem
-            {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            });
         }
     }
 }

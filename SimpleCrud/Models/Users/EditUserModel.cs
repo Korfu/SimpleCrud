@@ -1,6 +1,8 @@
 ﻿using System;
 using SimpleCrud.Entities;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace SimpleCrud.Models
 {
@@ -14,7 +16,8 @@ namespace SimpleCrud.Models
         [MinLength(3, ErrorMessage = "za krótkie Nazwisko!")]
         public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public Entities.Role Role { get; set; }
+        public IEnumerable<SelectListItem> RoleModelList { get; set; }
+        public long RoleId { get; set; }
 
     }
 }

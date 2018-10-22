@@ -64,6 +64,7 @@ namespace SimpleCrud.Repositories
             userToUpdate.FirstName = model.FirstName;
             userToUpdate.LastName = model.LastName;
             userToUpdate.IsActive = model.IsActive;
+            userToUpdate.RoleId = model.RoleId;
         }
 
         public void Delete(long id)
