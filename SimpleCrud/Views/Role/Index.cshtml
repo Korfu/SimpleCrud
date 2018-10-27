@@ -9,14 +9,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var role in Model)
-        {
-        <tr>
-            <td>@role.Id</td>
-            <td>@role.Name</td>
-            <td>@Html.ActionLink("Edit", "Edit", "Role", new { id = role.Id }, new { @class = "btn btn-warning" }) </td>
-            <td>@Html.ActionLink("Delete", "Delete", "Role", new { id = role.Id }, new { @class = "btn btn-danger" }) </td>
-        </tr>
-        }
+        @Html.DisplayFor(m => m)
     </tbody>
 </table>
+
+@*Szuka widoku _Footer*@
+@{
+    Html.RenderPartial("_Counter", Model.Count());
+}

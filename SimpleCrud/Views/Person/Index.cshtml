@@ -1,5 +1,4 @@
-﻿
-@using SimpleCrud.Controllers
+﻿@using SimpleCrud.Controllers
 @model PersonIndexModel
 
 @if (Model.AllowAdd)
@@ -24,11 +23,11 @@
 
 @*Szuka widoku _Footer*@
 @{
-    Html.RenderPartial("_Footer", Model);
+    Html.RenderPartial("_Counter", Model.Users.Count());
 }
 
 
 @*Szuka akcji _Footer*@
-@{ 
+@*@{ 
     Html.RenderAction("List", "Role");
-}
+}*@

@@ -233,8 +233,10 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Person\DisplayTemplates\UserModel.cshtml" />
-    <Content Include="Views\Person\_Footer.cshtml" />
+    <Content Include="Views\Person\_Counter.cshtml" />
     <Content Include="Views\Role\List.cshtml" />
+    <Content Include="Views\Role\DisplayTemplates\RoleViewModel.cshtml" />
+    <Content Include="Views\Role\_Counter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
