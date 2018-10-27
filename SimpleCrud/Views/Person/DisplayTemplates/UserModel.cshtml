@@ -1,0 +1,11 @@
+﻿@using SimpleCrud.Models
+@model UserModel
+
+<tr>
+    <td>@Model.FullName</td>
+    <td>@Model.Age</td>
+    <td>@Model.RoleName</td>
+    <td>@Model.IsActiveAsString</td>
+    <td>@Html.ActionLink("Edit", "Edit", "Person", new { id = Model.Id }, new { @class = "btn btn-warning" })</td>
+    <td>@Html.ActionLink("Delete", "Delete", "Person", new { id = Model.Id }, new { @class = "btn btn-danger" })</td>
+</tr>

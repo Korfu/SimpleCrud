@@ -1,6 +1,7 @@
 ﻿using SimpleCrud.Extentions;
 using SimpleCrud.Models;
 using SimpleCrud.Repositories;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
@@ -19,8 +20,12 @@ namespace SimpleCrud.Controllers
 
         public ActionResult Index()
         {
-            var userList = _personRepository.GetAllUsers();
-            return View(userList);
+            var model = new PersonIndexModel()
+            {
+                AllowAdd = true,
+                Users = _personRepository.GetAllUsers()
+            };
+            return View(model);
         }
 
         public ActionResult Edit(long id)
@@ -86,4 +91,11 @@ namespace SimpleCrud.Controllers
             return RedirectToAction("Index");
         }
     }
+
+    public class PersonIndexModel
+    {
+        public IEnumerable<UserModel> Users { get; set; }
+        public bool AllowAdd { get; set; }
+    }
+
 }
