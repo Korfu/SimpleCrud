@@ -3,21 +3,21 @@
 
 @using (Html.BeginForm())
 {
-    <div class=" form-group">
+    <div class="form-group">
         <label for="FristName">Imię</label>
         @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.FirstName)
     </div>
-    <div class=" form-group">
+    <div class="form-group">
         <label for="LastName">Naziwsko</label>
         @Html.EditorFor(m => m.LastName, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.LastName)
     </div>
-    <div class=" form-group">
+    <div class="form-group">
         <label for="DateOfBirth">Data Urodzenia</label>
         @Html.EditorFor(m => m.DateOfBirth, new { @class = "form-control" })
     </div>
-    <div class=" form-group">
+    <div class="form-group">
         <label for="Role">Rola</label>
         @Html.DropDownListFor(m => m.RoleId, Model.RoleModelList, "Select Role", new { @class = "form-control" })
     </div>

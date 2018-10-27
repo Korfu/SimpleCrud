@@ -17,7 +17,7 @@
         <tr>
             <td>@user.FullName</td>
             <td>@user.Age</td>
-            <td>@user.Role.Name</td>
+            <td>@user.RoleName</td>
             <td>@user.IsActiveAsString</td>
             <td>@Html.ActionLink("Edit", "Edit", "Person", new { id = user.Id }, new { @class = "btn btn-warning" })</td>
             <td>@Html.ActionLink("Delete", "Delete", "Person", new { id = user.Id }, new { @class = "btn btn-danger" })</td>

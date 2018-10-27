@@ -7,7 +7,7 @@ namespace SimpleCrud.Repositories
 {
     public class RoleRepository : IRoleRepository
     {
-        private static readonly IList<Role> _roles = new List<Role>()
+        public static readonly IList<Role> Roles = new List<Role>()
         {
             new Role {Id =0, Name="Admin" },
             new Role {Id = 1, Name="User"},
@@ -17,12 +17,12 @@ namespace SimpleCrud.Repositories
 
         private long GenerateKey()
         {
-            return _roles.Max(u => u.Id) + 1;
+            return Roles.Max(u => u.Id) + 1;
         }
 
         public EditRoleModel GetRole(long id)
         {
-            return _roles.Select(u => new EditRoleModel
+            return Roles.Select(u => new EditRoleModel
             {
                 Id = u.Id,
                 Name = u.Name
@@ -32,7 +32,7 @@ namespace SimpleCrud.Repositories
 
         public IEnumerable<RoleViewModel> GetAll()
         {
-            return _roles.Select(u => new RoleViewModel
+            return Roles.Select(u => new RoleViewModel
             {
                 Id = u.Id,
                 Name = u.Name
@@ -46,18 +46,18 @@ namespace SimpleCrud.Repositories
                 Id = GenerateKey(),
                 Name = roleModel.Name
             };
-            _roles.Add(role);
+            Roles.Add(role);
         }
 
         public void Delete(long id)
         {
-            var roleToDelete = _roles.Single(u => u.Id == id);
-            _roles.Remove(roleToDelete);
+            var roleToDelete = Roles.Single(u => u.Id == id);
+            Roles.Remove(roleToDelete);
         }
 
         public void Update(EditRoleModel model)
         {
-            var roleToUpdate = _roles.SingleOrDefault(r => r.Id == model.Id);
+            var roleToUpdate = Roles.SingleOrDefault(r => r.Id == model.Id);
             roleToUpdate.Name = model.Name;
         }
     }

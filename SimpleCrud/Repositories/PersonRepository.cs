@@ -29,7 +29,7 @@ namespace SimpleCrud.Repositories
                 LastName = userModel.LastName,
                 DateOfBirth = userModel.DateOfBirth,
                 IsActive = true,
-                RoleId = userModel.RoleId
+                Role = RoleRepository.Roles.SingleOrDefault(r => r.Id == userModel.RoleId)
             };
             _users.Add(user);
         }
@@ -42,7 +42,7 @@ namespace SimpleCrud.Repositories
                 FullName = string.Format($"{u.FirstName} {u.LastName}"),
                 Age = DateTime.Now.Year - u.DateOfBirth.Year,
                 IsActiveAsString = u.IsActive ? "Tak" : "Nie",
-                RoleId = u.RoleId
+                RoleName = u.Role?.Name ?? "Brak przypisania do roli"
             }).ToList();
         }
 
@@ -64,7 +64,7 @@ namespace SimpleCrud.Repositories
             userToUpdate.FirstName = model.FirstName;
             userToUpdate.LastName = model.LastName;
             userToUpdate.IsActive = model.IsActive;
-            userToUpdate.RoleId = model.RoleId;
+            userToUpdate.Role = RoleRepository.Roles.SingleOrDefault(r => r.Id == model.RoleId);
         }
 
         public void Delete(long id)

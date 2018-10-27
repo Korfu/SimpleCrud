@@ -8,31 +8,26 @@ namespace SimpleCrud.Controllers
 {
     public class PersonController : BaseController
     {
-        private readonly IRoleRepository _rolesRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IPersonRepository _personRepository;
 
         public PersonController(IPersonRepository personRepository,
-                                IRoleRepository rolesRepository)
+                                IRoleRepository roleRepository)
         {
-            _rolesRepository = rolesRepository;
+            _roleRepository = roleRepository;
             _personRepository = personRepository;
         }
 
         public ActionResult Index()
         {
             var userList = _personRepository.GetAllUsers();
-            foreach (var user in userList)
-            {
-                user.Role = _rolesRepository.GetAll().Single(x => x.Id == user.RoleId);
-            }
-
             return View(userList);
         }
 
         public ActionResult Edit(long id)
         {
             var model = _personRepository.GetUser(id);
-            var rolesList = _rolesRepository.GetAll();
+            var rolesList = _roleRepository.GetAll();
             model.RoleModelList = new SelectList(rolesList, "Id", "Name");
             return View(model);
         }
@@ -47,7 +42,7 @@ namespace SimpleCrud.Controllers
                 _personRepository.Update(model);
                 return RedirectToAction("index");
             }
-            var rolesList = _rolesRepository.GetAll();
+            var rolesList = _roleRepository.GetAll();
             model.RoleModelList = new SelectList(rolesList, "Id", "Name");
             return View(model);
         }
@@ -56,7 +51,7 @@ namespace SimpleCrud.Controllers
         public ActionResult Add()
         {
             var model = new AddUserModel();
-            var rolesList = _rolesRepository.GetAll();
+            var rolesList = _roleRepository.GetAll();
             model.RoleModelList = new SelectList(rolesList,"Id","Name");
             return View(model);
         }
@@ -71,7 +66,7 @@ namespace SimpleCrud.Controllers
                 _personRepository.Add(model);
                 return RedirectToAction("Index");
             }
-            var rolesList = _rolesRepository.GetAll();
+            var rolesList = _roleRepository.GetAll();
             model.RoleModelList = new SelectList(rolesList, "Id", "Name");
             return View(model);
         }
