@@ -233,10 +233,13 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Person\DisplayTemplates\UserModel.cshtml" />
+    <Content Include="Views\Person\_Footer.cshtml" />
+    <Content Include="Views\Role\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Person\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

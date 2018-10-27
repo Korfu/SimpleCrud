@@ -72,5 +72,11 @@ namespace SimpleCrud.Controllers
 
             return View(model);
         }
+
+        public ActionResult List()
+        {
+            var roles = _rolesRepository.GetAll();
+            return PartialView(roles);
+        }
     }
 }

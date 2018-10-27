@@ -17,6 +17,18 @@
         </tr>
     </thead>
     <tbody>
-        @Html.DisplayFor(m=>m.Users)
+        @Html.DisplayFor(m => m.Users)
     </tbody>
 </table>
+
+
+@*Szuka widoku _Footer*@
+@{
+    Html.RenderPartial("_Footer", Model);
+}
+
+
+@*Szuka akcji _Footer*@
+@{ 
+    Html.RenderAction("List", "Role");
+}

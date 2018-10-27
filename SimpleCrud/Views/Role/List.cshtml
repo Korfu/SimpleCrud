@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SimpleCrud.Models.Roles.RoleViewModel>
+
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            @item.Name
+        </li>
+    }
+</ul>
