@@ -76,5 +76,10 @@ namespace SimpleCrud.Repositories
             var userToDelete = _users.Single(u => u.Id == id);
             _users.Remove(userToDelete);
         }
+
+        public bool HasAnyUserRole(long roleId)
+        {
+            return _users.Any(u => u.Role?.Id == roleId);        
+        }
     }
 }

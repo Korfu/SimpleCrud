@@ -55,14 +55,22 @@ namespace SimpleCrud.Controllers
 
         public ActionResult Delete(long id)
         {
-            return View(id);
+            var model = new DeleteRoleModel { Id = id };
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Delete(long id, object dummy)
+        public ActionResult Delete (DeleteRoleModel model)
         {
-            _rolesRepository.Delete(id);
-            return RedirectToAction("Index");
+            Validate(model);
+
+            if (ModelState.IsValid)
+            {
+                _rolesRepository.Delete(model.Id);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
     }
 }

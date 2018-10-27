@@ -167,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Roles\AddRoleModel.cs" />
+    <Compile Include="Models\Roles\DeleteRoleModel.cs" />
     <Compile Include="Models\Roles\EditRoleModel.cs" />
     <Compile Include="Models\Roles\RoleViewModel.cs" />
     <Compile Include="Models\Users\EditUserModel.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Repositories\PersonInMemoryRepository.cs" />
     <Compile Include="Repositories\RoleInMemoryRepository.cs" />
     <Compile Include="Validators\AddUSerModelValidator.cs" />
+    <Compile Include="Validators\DeleteRoleModelValidator.cs" />
     <Compile Include="Validators\EditUserModelValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />
   </ItemGroup>

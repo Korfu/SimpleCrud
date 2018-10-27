@@ -15,11 +15,11 @@ namespace SimpleCrud.Validators
 
             if (model.FirstName?.Any(char.IsDigit) ?? false)
             {
-                result.Add(new ValidateResult { Key = nameof(model.FirstName), Message = "Wrong first name!" });
+                result.Add(new ValidateResult("","Wrong first name!"));
             };
             if (model.LastName?.Any(char.IsDigit) ?? false)
             {
-                result.Add(new ValidateResult { Key = nameof(model.LastName), Message = "Wrong last name!" });
+                result.Add(new ValidateResult("", "Wrong last name!"));
             };
 
             return result;

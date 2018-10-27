@@ -17,7 +17,7 @@ namespace SimpleCrud.Validators
 
             if (yearsDifference <= 10)
             {
-                result.Add(new ValidateResult { Key = nameof(model.DateOfBirth), Message = "Too YOUNG!" });
+                result.Add(new ValidateResult("","Too YOUNG!"));
             }
 
             return result;

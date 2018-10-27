@@ -12,5 +12,7 @@ namespace SimpleCrud.Repositories
         long Add(AddUserModel userModel);
         void Update(EditUserModel userModel);
         void Delete(long id);
+
+        bool HasAnyUserRole(long roleId);
     }
 }

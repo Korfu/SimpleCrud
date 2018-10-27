@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using SimpleCrud.Controllers;
 using SimpleCrud.Models;
+using SimpleCrud.Models.Roles;
 using SimpleCrud.Repositories;
 using SimpleCrud.Validators;
 using System;
@@ -39,6 +40,7 @@ namespace SimpleCrud
 
             kernel.Bind<IValidator<AddUserModel>>().To<AddUSerModelValidator>();
             kernel.Bind<IValidator<EditUserModel>>().To<EditUserModelValidator>();
+            kernel.Bind<IValidator<DeleteRoleModel>>().To<DeleteRoleModelValidator>();
 
             kernel.Bind<IRoleRepository>().To<RoleInMemoryRepository>();
             kernel.Bind<RoleController>().To<RoleController>();

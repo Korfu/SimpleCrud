@@ -1,9 +1,11 @@
-﻿@model long
+﻿@using SimpleCrud.Models.Roles
+@model DeleteRoleModel
 
 @using (Html.BeginForm())
 {
-    @Html.Hidden("id", Model);
+    @Html.Hidden("id", Model.Id);
 
-    <text>Czy jesteś pewien, że chcesz usynąć rolę o ID:@Model </text>
+    <text>Czy jesteś pewien, że chcesz usynąć rolę o ID:@Model.Id </text>
+    @Html.ValidationSummary()
     <input type="submit" value="Tak" class="btn btn-primary" />
 }
