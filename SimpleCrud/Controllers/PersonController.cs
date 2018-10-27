@@ -1,7 +1,6 @@
-﻿using SimpleCrud.Models;
-using SimpleCrud.Models.Roles;
+﻿using SimpleCrud.Extentions;
+using SimpleCrud.Models;
 using SimpleCrud.Repositories;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
@@ -27,8 +26,7 @@ namespace SimpleCrud.Controllers
         public ActionResult Edit(long id)
         {
             var model = _personRepository.GetUser(id);
-            var rolesList = _roleRepository.GetAll();
-            model.RoleModelList = new SelectList(rolesList, "Id", "Name");
+            model.RoleModelList = _roleRepository.GetAll().ToSelectList();
             return View(model);
         }
 
@@ -42,8 +40,7 @@ namespace SimpleCrud.Controllers
                 _personRepository.Update(model);
                 return RedirectToAction("index");
             }
-            var rolesList = _roleRepository.GetAll();
-            model.RoleModelList = new SelectList(rolesList, "Id", "Name");
+            model.RoleModelList = _roleRepository.GetAll().ToSelectList();
             return View(model);
         }
 
@@ -51,8 +48,7 @@ namespace SimpleCrud.Controllers
         public ActionResult Add()
         {
             var model = new AddUserModel();
-            var rolesList = _roleRepository.GetAll();
-            model.RoleModelList = new SelectList(rolesList,"Id","Name");
+            model.RoleModelList = _roleRepository.GetAll().ToSelectList();
             return View(model);
         }
 
@@ -66,8 +62,8 @@ namespace SimpleCrud.Controllers
                 _personRepository.Add(model);
                 return RedirectToAction("Index");
             }
-            var rolesList = _roleRepository.GetAll();
-            model.RoleModelList = new SelectList(rolesList, "Id", "Name");
+             
+            model.RoleModelList = _roleRepository.GetAll().ToSelectList();
             return View(model);
         }
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SimpleCrud.Models.Roles
+﻿namespace SimpleCrud.Models.Roles
 {
     public class EditRoleModel
     {

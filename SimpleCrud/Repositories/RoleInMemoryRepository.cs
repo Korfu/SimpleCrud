@@ -5,7 +5,7 @@ using SimpleCrud.Models.Roles;
 
 namespace SimpleCrud.Repositories
 {
-    public class RoleRepository : IRoleRepository
+    public class RoleInMemoryRepository : IRoleRepository
     {
         public static readonly IList<Role> Roles = new List<Role>()
         {
@@ -39,7 +39,7 @@ namespace SimpleCrud.Repositories
             });
         }
 
-        public void Add(AddRoleModel roleModel)
+        public long Add(AddRoleModel roleModel)
         {
             var role = new Role
             {
@@ -47,6 +47,7 @@ namespace SimpleCrud.Repositories
                 Name = roleModel.Name
             };
             Roles.Add(role);
+            return role.Id;
         }
 
         public void Delete(long id)

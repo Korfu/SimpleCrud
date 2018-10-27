@@ -162,6 +162,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Extentions\RoleViewModelExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,8 +176,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IPersonRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Repositories\PersonRepository.cs" />
-    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\PersonInMemoryRepository.cs" />
+    <Compile Include="Repositories\RoleInMemoryRepository.cs" />
     <Compile Include="Validators\AddUSerModelValidator.cs" />
     <Compile Include="Validators\EditUserModelValidator.cs" />
     <Compile Include="Validators\IValidator.cs" />

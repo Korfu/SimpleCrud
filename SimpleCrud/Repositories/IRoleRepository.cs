@@ -9,7 +9,7 @@ namespace SimpleCrud.Repositories
         IEnumerable<RoleViewModel> GetAll();
         EditRoleModel GetRole(long id);
   
-        void Add(AddRoleModel roleModel);
+        long Add(AddRoleModel roleModel);
         void Update(EditRoleModel model);
         void Delete(long id);
     }
