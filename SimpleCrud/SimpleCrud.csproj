@@ -172,6 +172,7 @@
     <Compile Include="Models\Roles\RoleViewModel.cs" />
     <Compile Include="Models\Users\EditUserModel.cs" />
     <Compile Include="Models\Users\AddUserModel.cs" />
+    <Compile Include="Models\Users\UserBaseModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -237,6 +238,7 @@
     <Content Include="Views\Role\List.cshtml" />
     <Content Include="Views\Role\DisplayTemplates\RoleViewModel.cshtml" />
     <Content Include="Views\Role\_Counter.cshtml" />
+    <Content Include="Views\Person\_PersonBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

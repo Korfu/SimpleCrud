@@ -5,26 +5,13 @@
 {
     @Html.HiddenFor(m => m.Id)
 
-    <div class="form-group">
-        <label for="FirstName">Imie</label>
-        @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.FirstName)
-    </div>
-
-    <div class="form-group">
-        <label for="LastName">Nazwisko</label>
-        @Html.EditorFor(m => m.LastName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.LastName)
-    </div>
+    Html.RenderPartial("_PersonBase", Model);
     <div class="form-group">
         <label for="IsActive">Czy aktywny?</label>
         @Html.EditorFor(m => m.IsActive, new { @class = "form-control" })
     </div>
-    <div class="form-group">
-        <label for="Role">Rola</label>
-        @Html.DropDownListFor(m => m.RoleId, Model.RoleModelList, "Select Role", new { @class = "form-control" })
-    </div>
-    @Html.ValidationSummary()
-    <input type="submit" class="btn btn-primary" value="Zapisz" />
 
+    @Html.ValidationSummary()
+
+    <input type="submit" class="btn btn-primary" value="Zapisz" />
 }
