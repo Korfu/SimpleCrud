@@ -1,5 +1,5 @@
 ﻿using SimpleCrud.Models;
-using SimpleCrud.Models.Role;
+using SimpleCrud.Models.Roles;
 using SimpleCrud.Repositories;
 using System.Linq;
 using System.Web.Mvc;
@@ -8,11 +8,11 @@ namespace SimpleCrud.Controllers
 {
     public class PersonController : BaseController
     {
-        private readonly IRolesRepository _rolesRepository;
+        private readonly IRoleRepository _rolesRepository;
         private readonly IPersonRepository _personRepository;
 
         public PersonController(IPersonRepository personRepository,
-                                IRolesRepository rolesRepository)
+                                IRoleRepository rolesRepository)
         {
             _rolesRepository = rolesRepository;
             _personRepository = personRepository;

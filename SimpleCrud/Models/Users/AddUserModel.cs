@@ -1,4 +1,4 @@
-﻿using SimpleCrud.Models.Role;
+﻿using SimpleCrud.Models.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

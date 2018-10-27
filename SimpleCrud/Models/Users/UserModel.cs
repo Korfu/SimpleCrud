@@ -1,4 +1,4 @@
-﻿using SimpleCrud.Models.Role;
+﻿using SimpleCrud.Models.Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,6 @@ namespace SimpleCrud.Models
         public int Age { get; set; }
         public string IsActiveAsString { get; set; }
         public long RoleId { get; set; }
-        public RoleModel Role { get; set; }
+        public RoleViewModel Role { get; set; }
     }
 }

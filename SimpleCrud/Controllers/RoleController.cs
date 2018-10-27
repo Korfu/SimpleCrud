@@ -1,4 +1,5 @@
 ﻿using SimpleCrud.Models;
+using SimpleCrud.Models.Roles;
 using SimpleCrud.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Web.Mvc;
 
 namespace SimpleCrud.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
-        private IRolesRepository _rolesRepository;
+        private IRoleRepository _rolesRepository;
 
-        public RoleController(IRolesRepository rolesRepository)
+        public RoleController(IRoleRepository rolesRepository)
         {
             _rolesRepository = rolesRepository;
         }
@@ -32,8 +33,29 @@ namespace SimpleCrud.Controllers
         [HttpPost]
         public ActionResult Add(AddRoleModel model)
         {
-            _rolesRepository.Add(model);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _rolesRepository.Add(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public ActionResult Edit(long id)
+        {
+            var roleToEdit = _rolesRepository.GetRole(id);
+            return View(roleToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult Edit (EditRoleModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _rolesRepository.Update(model);
+                return RedirectToAction("index");
+            }
+            return View(model);
         }
 
         public ActionResult Delete(long id)
@@ -47,6 +69,5 @@ namespace SimpleCrud.Controllers
             _rolesRepository.Delete(id);
             return RedirectToAction("Index");
         }
-
     }
 }
