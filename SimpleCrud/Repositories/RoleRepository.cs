@@ -26,7 +26,7 @@ namespace SimpleCrud.Repositories
             {
                 Id = u.Id,
                 Name = u.Name
-            }).SingleOrDefault();
+            }).SingleOrDefault(u => u.Id == id);
 
         }
 
