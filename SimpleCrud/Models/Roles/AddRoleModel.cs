@@ -1,7 +1,6 @@
 ﻿namespace SimpleCrud.Models.Roles
 {
-    public class AddRoleModel
+    public class AddRoleModel : RoleModelBase
     {
-        public string Name { get; set; }
     }
 }

@@ -2,12 +2,10 @@
 @model AddRoleModel
 
 @using (Html.BeginForm())
-{
-    <div class="form-group">
-        <label for="Name">Role</label>
-        @Html.EditorFor(m => m.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Name)
-    </div>
-    @Html.ValidationSummary()
-    <input type="submit" class="btn btn-primary" value="Zapisz" />
+        {
+            Html.RenderPartial("_RoleDetails", Model);
+    <input type="submit" class="btn btn-primary" value="Dodaj" />
+}
+@{
+    Html.RenderPartial("_RoleDetails", Model)
 }

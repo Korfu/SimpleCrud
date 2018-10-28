@@ -169,6 +169,7 @@
     <Compile Include="Models\Roles\AddRoleModel.cs" />
     <Compile Include="Models\Roles\DeleteRoleModel.cs" />
     <Compile Include="Models\Roles\EditRoleModel.cs" />
+    <Compile Include="Models\Roles\RoleModelBase.cs" />
     <Compile Include="Models\Roles\RoleViewModel.cs" />
     <Compile Include="Models\Users\EditUserModel.cs" />
     <Compile Include="Models\Users\AddUserModel.cs" />
@@ -239,6 +240,7 @@
     <Content Include="Views\Role\DisplayTemplates\RoleViewModel.cshtml" />
     <Content Include="Views\Role\_Counter.cshtml" />
     <Content Include="Views\Person\_PersonBase.cshtml" />
+    <Content Include="Views\Role\_RoleDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

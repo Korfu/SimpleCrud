@@ -1,0 +1,9 @@
+﻿@using SimpleCrud.Models.Roles
+@model RoleModelBase
+
+<div class="form-group">
+    <label for="Name">Role</label>
+    @Html.EditorFor(m => m.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Name)
+</div>
+@Html.ValidationSummary()

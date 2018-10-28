@@ -17,8 +17,6 @@ namespace SimpleCrud.Models.Users
         [MinLength(3, ErrorMessage = "za krótkie Nazwisko!")]
         public string LastName { get; set; }
 
-        
-
         public IEnumerable<SelectListItem> RoleModelList { get; set; }
         public long RoleId { get; set; }
     }
